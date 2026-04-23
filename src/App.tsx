@@ -1,7 +1,9 @@
+import { Header } from "@components/ui/Header.tsx";
+
 function App() {
   return (
     <>
-      <h1>Starting with this</h1>
+      <Header />
     </>
   );
 }
