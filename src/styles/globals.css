@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("@assets/fonts/CascadiaCode.ttf") format("truetype");
+}
+
+@theme {
+  /*-- FONTS --*/
+  --font-family: "Cascadia Code", sans-serif;
+
+  /* -- COLORS -- */
+  --color-secondary: #985b47;
+}
+
+:root {
+  font-family: var(--font-family);
+}

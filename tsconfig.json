@@ -2,7 +2,7 @@
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    { "path": "./tsconfig.node.json" },
   ],
   "compilerOptions": {
     "paths": {
@@ -10,10 +10,12 @@
       "@styles/*": ["./src/styles/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@components/*": ["./src/components/*"],
-      "@lib/*": ["./src/lib/*"]
+      "@lib/*": ["./src/lib/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@icons/*": ["./src/components/icons/*"],
     },
-    "moduleresolution": "bundler",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "noEmit": true
-  }
+    "noEmit": true,
+  },
 }

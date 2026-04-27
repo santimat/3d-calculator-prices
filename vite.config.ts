@@ -15,9 +15,11 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "@components": path.resolve(__dirname, "./src/components"),
+      "@icons": path.resolve(__dirname, "./src/components/icons"),
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@lib": path.resolve(__dirname, "./src/lib"),
       "@styles": path.resolve(__dirname, "./src/styles"),
+      "@assets": path.resolve(__dirname, "./src/assets"),
     },
   },
 });
