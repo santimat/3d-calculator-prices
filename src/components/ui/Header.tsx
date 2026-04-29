@@ -2,7 +2,7 @@ import { PrinterIcon } from "@icons/Printer";
 
 export function Header() {
   return (
-    <header className="bg-secondary flex gap-4 text-amber-50 py-6 px-4">
+    <header className="bg-secondary flex gap-4 text-primary py-6 px-4">
       <div>
         <PrinterIcon size={50} />
       </div>
