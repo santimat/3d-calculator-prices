@@ -10,10 +10,21 @@
   --font-family: "Cascadia Code", sans-serif;
 
   /* -- COLORS -- */
-  --color-secondary: #b7694a;
   --color-primary: #f0eae2;
+  --color-secondary: #b7694a;
+  --color-secondary-dark: #6d402c;
+  --color-tertiary: #eee9ee;
+  --color-neutral: #797675;
 }
 
 :root {
   font-family: var(--font-family);
+}
+hr {
+  color: var(--color-neutral);
+}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
