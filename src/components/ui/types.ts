@@ -1,5 +1,4 @@
 export interface Print {
-  cost: number;
   createdAt: Date;
   id: string;
   img: string;

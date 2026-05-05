@@ -1,6 +1,12 @@
 import { ClockIcon } from "@icons/Clock";
 import type { Print } from "@components/ui/types.tsx";
-import { formatDate, formatWeight } from "@lib/utils";
+import {
+  formatCurrency,
+  formatDate,
+  formatTime,
+  formatWeight,
+} from "@lib/utils";
+import { DEFAULTS } from "@lib/defaults.ts";
 
 export function PrintCard({
   id,
@@ -8,13 +14,14 @@ export function PrintCard({
   material,
   materialAmount,
   createdAt,
-  cost,
   img,
   printTime,
 }: Print) {
+  const materialCost = DEFAULTS.materialCost / materialAmount;
+
   return (
     <article className="bg-neutral/15 p-4 border border-neutral/50 hover:scale-102 transition-transform">
-      <a href={`/${id}`}>
+      <a href={`?id=${id}`}>
         <div>
           <div className="flex gap-4">
             <div>
@@ -43,11 +50,11 @@ export function PrintCard({
               </li>
               <li>
                 <span className="text-neutral text-md">Tiempo Imp.</span>
-                <p>{printTime}h</p>
+                <p>{formatTime(printTime)}</p>
               </li>
               <li>
                 <span className="text-neutral text-md">Costo</span>
-                <p className="text-secondary">${cost.toFixed(2)}</p>
+                <p className="text-secondary">{formatCurrency(materialCost)}</p>
               </li>
             </ul>
           </div>
