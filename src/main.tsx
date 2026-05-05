@@ -1,6 +1,11 @@
 import { createRoot } from "react-dom/client";
-import "@styles/globals.css";
+import { BrowserRouter } from "react-router-dom";
 import App from "@/App.tsx";
+import "@styles/globals.css";
 
 // ! is used to assert that the value is not null or undefined
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+);

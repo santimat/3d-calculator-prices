@@ -28,7 +28,8 @@
       "@lib/*": ["./src/lib/*"],
       "@assets/*": ["./src/assets/*"],
       "@icons/*": ["./src/components/icons/*"],
-    },
+      "@pages/*": ["./src/pages/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src"]
 }
