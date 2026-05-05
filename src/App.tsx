@@ -1,15 +1,14 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "@pages/Home.tsx";
-import { Calculator } from "@components/ui/Calculator.tsx";
-import { Header } from "@components/ui/Header.tsx";
+import { HomePage } from "@pages/Home.tsx";
+import { CalculatorPage } from "@pages/Calculator.tsx";
 import { Footer } from "@components/ui/Footer.tsx";
 function App() {
   return (
     <>
-      <Header />
+      <hr />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/calculadora" element={<Calculator />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/calculadora" element={<CalculatorPage />} />
       </Routes>
       <Footer />
     </>

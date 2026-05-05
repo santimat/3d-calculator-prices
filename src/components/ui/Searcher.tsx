@@ -18,8 +18,13 @@ export function Searcher() {
         <label htmlFor={filterId}>
           <SortIcon size={20} />
         </label>
-        <select className="hover:cursor-pointer" name="filter" id={filterId}>
-          <option selected disabled>
+        <select
+          className="hover:cursor-pointer"
+          name="filter"
+          id={filterId}
+          defaultValue={"sort"}
+        >
+          <option disabled value={"sort"}>
             SORT
           </option>
         </select>
