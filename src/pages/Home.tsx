@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 
 export function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const productId = searchParams.get("id");
+  const productId = searchParams.get("id") || "";
   const [openModal, setOpenModal] = useState(productId !== null);
 
   const onClose = () => {

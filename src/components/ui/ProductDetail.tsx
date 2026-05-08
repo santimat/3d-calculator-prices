@@ -1,8 +1,6 @@
-
 import { InfoIcon } from "@icons/Info.tsx";
 import { PenIcon } from "@icons/Pen.tsx";
 import { useProductStore } from "@store/printStore.ts";
-
 
 interface ProductDetailProps {
   productId: string;
@@ -18,7 +16,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
       <div className="p-8 flex justify-center items-center">
         <p className="text-red-500 text-xl font-bold">Producto no encontrado</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -32,11 +30,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
       <div className="border-t border-b py-4">
         <div className="mb-4 flex gap-4 border-neutral/50 p-2 items-center  border">
           <div className="w-30 border">
-            <img
-              className="saturate-0"
-              src={}
-              alt={}
-            />
+            <img className="saturate-0" src="" alt="" />
           </div>
           <div>
             <p className="uppercase text-neutral">Especificaciones</p>
@@ -67,9 +61,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
             </li>
             <li className="flex gap-2 items-center justify-between">
               <span>Costo de energía</span>
-              <p className="text-black">
-                {)}
-              </p>
+              <p className="text-black">{}</p>
             </li>
           </ul>
           <div className="flex justify-between text-xl text-secondary pt-2">
