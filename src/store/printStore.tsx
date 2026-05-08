@@ -1,10 +1,15 @@
 import { create } from "zustand";
-import type { Print } from "@components/ui/types.tsx";
+import type { Product } from "@components/ui/types.tsx";
 
-interface PrintStore {
-  prints: Print[];
+interface ProductStore {
+  products: Product[];
+  addPrint: (product: Product) => void;
 }
 
-export const usePrintStore = create<PrintStore>()((set) => ({
-  prints: [],
+export const useProductStore = create<ProductStore>()((set, get) => ({
+  products: [],
+  addPrint: (product: Product) => {
+    const { products } = get();
+    set({ products: [...products, product] });
+  },
 }));

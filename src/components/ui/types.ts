@@ -1,4 +1,4 @@
-export interface Print {
+export interface Product {
   createdAt: Date;
   id: string;
   img: string;

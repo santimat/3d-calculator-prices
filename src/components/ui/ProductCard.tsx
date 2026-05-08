@@ -1,5 +1,5 @@
 import { ClockIcon } from "@icons/Clock";
-import type { Print } from "@components/ui/types.tsx";
+import type { Product } from "@components/ui/types.tsx";
 import {
   formatCurrency,
   formatDate,
@@ -8,7 +8,7 @@ import {
 } from "@lib/utils";
 import { DEFAULTS } from "@lib/defaults.ts";
 
-export function PrintCard({
+export function ProductCard({
   id,
   name,
   material,
@@ -16,7 +16,7 @@ export function PrintCard({
   createdAt,
   img,
   printTime,
-}: Print) {
+}: Product) {
   const materialCost = DEFAULTS.materialCost / materialAmount;
 
   return (

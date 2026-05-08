@@ -19,7 +19,7 @@ const testPrint = {
 };
 
 const materialCost = DEFAULTS.materialCost / testPrint.materialAmount;
-export function DetailedPrint() {
+export function ProductDetail() {
   return (
     <article className="bg-tertiary p-4">
       <div className="flex justify-between mb-4">
