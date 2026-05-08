@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Product } from "@components/ui/types.tsx";
+import { useDefaultConfigStore } from "@store/defaultConfigStore.ts";
 
 interface ProductStore {
   products: Product[];
@@ -13,6 +14,11 @@ export const useProductStore = create<ProductStore>()(
   persist(
     (set, get) => ({
       products: [],
+      getMaterialCost: (product: Product) => {
+        // .getState() gives the value without suscribe to changes, prevents unnecessary re-renders
+        const { materialPrice } = useDefaultConfigStore.getState();
+        return product.materialAmount * (materialPrice || 0);
+      },
       addPrint: (product: Product) => {
         const { products } = get();
         set({ products: [...products, product] });
