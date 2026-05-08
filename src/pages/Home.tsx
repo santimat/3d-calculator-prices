@@ -8,13 +8,14 @@ import { useSearchParams } from "react-router-dom";
 
 export function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const printId = searchParams.get("id");
-  const [openModal, setOpenModal] = useState(printId !== null);
+  const productId = searchParams.get("id") || "";
+  const [openModal, setOpenModal] = useState(productId !== null);
 
   const onClose = () => {
     setSearchParams({});
     setOpenModal(false);
   };
+
   return (
     <>
       <Header
@@ -24,8 +25,8 @@ export function HomePage() {
       <main className="my-8 max-w-[85%] mx-auto flex flex-col gap-8">
         <Searcher />
         <PrintList products={[]} />
-        <Modal isOpen={openModal} onClose={onClose}>
-          <ProductDetail />
+        <Modal isOpen={openModal}>
+          <ProductDetail productId={productId} />
         </Modal>
       </main>
     </>
