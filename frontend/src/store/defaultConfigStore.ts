@@ -1,24 +1,25 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface DefaultConfig {
-  materialPrice?: number;
-  pricekWh?: number;
-  updateConfig: (config: DefaultConfig) => void;
-  getMaterialCost: (materialAmount: number) => number;
+interface ConfigState {
+  materialPricePerKG: number;
+  pricekWh: number;
 }
+
+interface ConfigActions {
+  updateConfig: (config: Partial<ConfigState>) => void;
+}
+
+interface DefaultConfig extends ConfigState, ConfigActions {}
 
 export const useDefaultConfigStore = create<DefaultConfig>()(
   persist(
-    (set, get) => ({
-      materialPrice: 25000,
+    (set) => ({
+      materialPricePerKG: 25000,
       pricekWh: 150,
-      updateConfig: (config: DefaultConfig) => {
-        set((state) => ({ ...state, ...config }));
-      },
-      getMaterialCost: (materialAmount: number) => {
-        const materialPrice = get().materialPrice || 0;
-        return materialAmount * materialPrice;
+      // Partial<> allows receive just the propertias that exist on ConfigState
+      updateConfig: (config: Partial<ConfigState>) => {
+        set(() => config);
       },
     }),
     {
