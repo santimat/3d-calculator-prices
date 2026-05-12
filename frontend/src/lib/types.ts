@@ -25,5 +25,6 @@ export interface Product {
   material: string;
   materialAmount: number;
   name: string;
-  printTime: number;
+  printingHours: number;
+  printingMinutes: number;
 }
