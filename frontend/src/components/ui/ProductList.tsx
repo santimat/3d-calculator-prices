@@ -1,4 +1,4 @@
-import type { Product } from "@components/ui/types.ts";
+import type { Product } from "@lib/types";
 import { ProductCard } from "@/components/ui/ProductCard";
 
 export function PrintList({ products }: { products: Product[] }) {

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Product } from "@components/ui/types.tsx";
+import type { Product } from "@lib/types";
 import { useDefaultConfigStore } from "@store/defaultConfigStore.ts";
 
 interface ProductStore {
@@ -9,11 +9,21 @@ interface ProductStore {
   findProductById: (id: string) => Product | null;
 }
 
+const exampleProduct: Product = {
+  id: "1",
+  name: "Producto de ejemplo",
+  material: "PLA",
+  materialAmount: 100,
+  printTime: 60,
+  img: "https://via.placeholder.com/150",
+  createdAt: new Date(),
+};
+
 export const useProductStore = create<ProductStore>()(
   // persist handles localStorage synching
   persist(
     (set, get) => ({
-      products: [],
+      products: [exampleProduct],
       getMaterialCost: (product: Product) => {
         // .getState() gives the value without suscribe to changes, prevents unnecessary re-renders
         const { materialPrice } = useDefaultConfigStore.getState();

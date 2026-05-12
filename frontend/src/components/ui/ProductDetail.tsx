@@ -1,6 +1,7 @@
-import { InfoIcon } from "@icons/Info.tsx";
-import { PenIcon } from "@icons/Pen.tsx";
-import { useProductStore } from "@store/printStore.ts";
+import { InfoIcon } from "@icons/Info";
+import { PenIcon } from "@icons/Pen";
+import { useProductStore } from "@store/printStore";
+import type { Product } from "@lib/types";
 
 interface ProductDetailProps {
   productId: string;
@@ -9,7 +10,7 @@ interface ProductDetailProps {
 export function ProductDetail({ productId }: ProductDetailProps) {
   // get method but no suscribe to changes, prevents unnecessary re-renders
   const { findProductById } = useProductStore.getState();
-  const product = findProductById(productId);
+  const product: Product = findProductById(productId);
 
   if (!product) {
     return (
@@ -19,12 +20,14 @@ export function ProductDetail({ productId }: ProductDetailProps) {
     );
   }
 
+  const { name, material, materialAmount, printTime, img } = product;
+
   return (
     <article className="bg-tertiary p-4">
       <div className="flex justify-between mb-4">
         <div className="flex gap-2">
           <InfoIcon className="text-neutral" />
-          <h2 className="uppercase">{}</h2>
+          <h2 className="uppercase">{name}</h2>
         </div>
       </div>
       <div className="border-t border-b py-4">

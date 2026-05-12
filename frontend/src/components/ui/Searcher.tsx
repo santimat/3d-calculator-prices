@@ -1,7 +1,7 @@
 import { useId } from "react";
 
-import { SearchIcon } from "@icons/Search.tsx";
-import { SortIcon } from "@icons/Sort.tsx";
+import { SearchIcon } from "@icons/Search";
+import { SortIcon } from "@icons/Sort";
 
 export function Searcher() {
   const filterId: string = useId();

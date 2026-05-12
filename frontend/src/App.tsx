@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
-import { HomePage } from "@pages/Home.tsx";
-import { CalculatorPage } from "@pages/Calculator.tsx";
-import { Footer } from "@components/ui/Footer.tsx";
+import { HomePage } from "@pages/Home";
+import { CalculatorPage } from "@pages/Calculator";
+import { Footer } from "@components/ui/Footer";
 
 function App() {
   return (

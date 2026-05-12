@@ -1,4 +1,4 @@
-import type { Props } from "@icons/types.tsx";
+import type { Props } from "@icons/types";
 import { Pen } from "lucide-react";
 
 export function PenIcon({ ...props }: Props) {

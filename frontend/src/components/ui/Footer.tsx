@@ -1,7 +1,7 @@
-import { ArchiveIcon } from "@icons/Archive.tsx";
-import { CalculatorIcon } from "@icons/Calculator.tsx";
-import { ChartIcon } from "@icons/Chart.tsx";
-import { Link } from "./Link";
+import { ArchiveIcon } from "@icons/Archive";
+import { CalculatorIcon } from "@icons/Calculator";
+import { ChartIcon } from "@icons/Chart";
+import { Link } from "@components/ui/Link";
 
 const footerItems = [
   {

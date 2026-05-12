@@ -5,6 +5,7 @@ interface DefaultConfig {
   materialPrice?: number;
   pricekWh?: number;
   updateConfig: (config: DefaultConfig) => void;
+  getMaterialCost: (materialAmount: number) => number;
 }
 
 export const useDefaultConfigStore = create<DefaultConfig>()(
@@ -14,6 +15,10 @@ export const useDefaultConfigStore = create<DefaultConfig>()(
       pricekWh: 150,
       updateConfig: (config: DefaultConfig) => {
         set((state) => ({ ...state, ...config }));
+      },
+      getMaterialCost: (materialAmount: number) => {
+        const materialPrice = get().materialPrice || 0;
+        return materialAmount * materialPrice;
       },
     }),
     {

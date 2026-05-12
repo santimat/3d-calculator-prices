@@ -1,12 +1,14 @@
 import { ClockIcon } from "@icons/Clock";
-import type { Product } from "@components/ui/types.tsx";
+import type { Product } from "@lib/types";
+
 import {
   formatCurrency,
   formatDate,
   formatTime,
   formatWeight,
 } from "@lib/utils";
-import { DEFAULTS } from "@lib/defaults.ts";
+
+import { useDefaultConfigStore } from "@store/defaultConfigStore";
 
 export function ProductCard({
   id,
@@ -17,7 +19,11 @@ export function ProductCard({
   img,
   printTime,
 }: Product) {
-  const materialCost = DEFAULTS.materialCost / materialAmount;
+  const getMaterialCost = useDefaultConfigStore(
+    (state) => state.getMaterialCost,
+  );
+
+  const materialCost = getMaterialCost(materialAmount);
 
   return (
     <article className="bg-neutral/15 p-4 border border-neutral/50 hover:scale-102 transition-transform">

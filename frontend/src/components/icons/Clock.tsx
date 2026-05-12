@@ -1,4 +1,4 @@
-import type { Props } from "@icons/types.tsx";
+import type { Props } from "@icons/types";
 import { Clock4 } from "lucide-react";
 
 export function ClockIcon({ ...props }: Props) {

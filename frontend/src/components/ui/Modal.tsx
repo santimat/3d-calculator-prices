@@ -9,7 +9,7 @@ export function Modal({ isOpen, children, onClose }: ModalProps) {
 
   return (
     <div
-      className="absolute z-10 inset-0 w-full h-full backdrop-blur-[3px] flex items-center justify-center"
+      className="absolute z-10 inset-0 w-full h-full backdrop-blur-xs flex items-center justify-center"
       onClick={onClose}
     >
       <div className="relative z-20">{children}</div>
