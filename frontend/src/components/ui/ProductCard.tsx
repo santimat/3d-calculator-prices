@@ -2,13 +2,13 @@ import { ClockIcon } from "@icons/Clock";
 import type { Product } from "@lib/types";
 
 import {
+  calculateEnergyCost,
+  calculateMaterialCost,
   formatCurrency,
   formatDate,
   formatTime,
   formatWeight,
 } from "@lib/utils";
-
-import { useDefaultConfigStore } from "@store/defaultConfigStore";
 
 export function ProductCard({
   id,
@@ -17,13 +17,11 @@ export function ProductCard({
   materialAmount,
   createdAt,
   img,
-  printTime,
+  printingHours,
+  printingMinutes,
 }: Product) {
-  const getMaterialCost = useDefaultConfigStore(
-    (state) => state.getMaterialCost,
-  );
-
-  const materialCost = getMaterialCost(materialAmount);
+  const materialCost = calculateMaterialCost(materialAmount);
+  const energyCost = calculateEnergyCost(printingHours * 60 + printingMinutes);
 
   return (
     <article className="bg-neutral/15 p-4 border border-neutral/50 hover:scale-102 transition-transform">
@@ -56,11 +54,13 @@ export function ProductCard({
               </li>
               <li>
                 <span className="text-neutral text-md">Tiempo Imp.</span>
-                <p>{formatTime(printTime)}</p>
+                <p>{formatTime(printingHours, printingMinutes)}</p>
               </li>
               <li>
                 <span className="text-neutral text-md">Costo</span>
-                <p className="text-secondary">{formatCurrency(materialCost)}</p>
+                <p className="text-secondary">
+                  {formatCurrency(materialCost + energyCost)}
+                </p>
               </li>
             </ul>
           </div>

@@ -2,6 +2,13 @@ import { InfoIcon } from "@icons/Info";
 import { PenIcon } from "@icons/Pen";
 import { useProductStore } from "@store/printStore";
 import type { Product } from "@lib/types";
+import {
+  formatCurrency,
+  formatTime,
+  formatWeight,
+  calculateMaterialCost,
+  calculateEnergyCost,
+} from "@/lib/utils";
 
 interface ProductDetailProps {
   productId: string;
@@ -10,7 +17,7 @@ interface ProductDetailProps {
 export function ProductDetail({ productId }: ProductDetailProps) {
   // get method but no suscribe to changes, prevents unnecessary re-renders
   const { findProductById } = useProductStore.getState();
-  const product: Product = findProductById(productId);
+  const product: Product | null = findProductById(productId);
 
   if (!product) {
     return (
@@ -20,10 +27,20 @@ export function ProductDetail({ productId }: ProductDetailProps) {
     );
   }
 
-  const { name, material, materialAmount, printTime, img } = product;
+  const {
+    name,
+    material,
+    materialAmount,
+    printingHours,
+    printingMinutes,
+    img,
+  } = product;
+  const materialCost = calculateMaterialCost(materialAmount);
+  const energyCost = calculateEnergyCost(printingHours * 60 + printingMinutes);
+  const estimatedTotalCost = materialCost + energyCost;
 
   return (
-    <article className="bg-tertiary p-4">
+    <article className="bg-tertiary p-4 shadow-2xl border border-neutral/50">
       <div className="flex justify-between mb-4">
         <div className="flex gap-2">
           <InfoIcon className="text-neutral" />
@@ -33,24 +50,24 @@ export function ProductDetail({ productId }: ProductDetailProps) {
       <div className="border-t border-b py-4">
         <div className="mb-4 flex gap-4 border-neutral/50 p-2 items-center  border">
           <div className="w-30 border">
-            <img className="saturate-0" src="" alt="" />
+            <img className="saturate-0" src={img} alt={`Imagen de ${name}`} />
           </div>
           <div>
             <p className="uppercase text-neutral">Especificaciones</p>
             <ul>
               <li className="flex gap-2 items-center">
                 <span className="text-neutral text-sm">Material:</span>
-                <p>{}</p>
+                <p>{material}</p>
               </li>
               <li className="flex gap-2 items-center">
                 <span className="text-neutral text-sm">Cant. de material:</span>
-                <p>{}</p>
+                <p>{formatWeight(materialAmount)}</p>
               </li>
               <li className="flex gap-2 items-center">
                 <span className="text-neutral text-sm">
                   Tiempo de impresión:
                 </span>
-                <p>{}</p>
+                <p>{formatTime(printingHours, printingMinutes)}</p>
               </li>
             </ul>
           </div>
@@ -60,16 +77,16 @@ export function ProductDetail({ productId }: ProductDetailProps) {
           <ul className="border-b border-neutral/50 py-2">
             <li className="flex gap-2 items-center justify-between">
               <span>Costo material</span>
-              <p className="text-black">{}</p>
+              <p className="text-black">{formatCurrency(materialCost)}</p>
             </li>
             <li className="flex gap-2 items-center justify-between">
               <span>Costo de energía</span>
-              <p className="text-black">{}</p>
+              <p className="text-black">{formatCurrency(energyCost)}</p>
             </li>
           </ul>
           <div className="flex justify-between text-xl text-secondary pt-2">
             <span>Total Estimado</span>
-            <p>{}</p>
+            <p>{formatCurrency(estimatedTotalCost)}</p>
           </div>
         </div>
       </div>
